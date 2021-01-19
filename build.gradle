@@ -1,0 +1,65 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
+    }
+}
+
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+//    id "com.jfrog.bintray" version "1.+"
+}
+apply plugin: 'com.jfrog.bintray'
+
+group 'org.setu'
+version '0.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            groupId "org.setu.java_sdk"
+            artifactId 'gradle-project'
+            version '0.0.1'
+        }
+    }
+}
+
+bintray {
+    user = System.getProperty('USER')
+    key = System.getProperty('KEY')
+    pkg {
+        repo = 'setu-java-sdk'
+        name = 'org.setu.java_sdk'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/AadumKhor/setu-java-sdk.git'
+    }
+    publications = ['MyPublication']
+}
+
+
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    // JWT
+    implementation 'com.auth0:java-jwt:3.12.0'
+    //GSON
+    implementation 'com.google.code.gson:gson:2.8.6'
+    // OkHttp
+    implementation 'com.squareup.okhttp3:okhttp:3.2.0'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+test {
+    useJUnitPlatform()
+}
