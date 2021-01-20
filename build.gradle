@@ -1,50 +1,28 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
-    }
-}
-
 plugins {
     id 'java-library'
     id 'maven-publish'
-//    id "com.jfrog.bintray" version "1.+"
 }
-apply plugin: 'com.jfrog.bintray'
 
 group 'org.setu'
-version '0.0.1'
+version '0.0.3'
 
 repositories {
     mavenCentral()
 }
 
-publishing {
-    publications {
-        MyPublication(MavenPublication) {
-            from components.java
-            groupId "org.setu.java_sdk"
-            artifactId 'gradle-project'
-            version '0.0.1'
+publishing{
+    // Github repo config
+    repositories{
+        maven{
+            name="Upi-Deeplinks-Java-SDK"
+            url="https://github.com/SetuHQ/java-upi-deep-links"
+            credentials{
+                username=System.getProperty("GITHUB_ACTOR")
+                password=System.getProperty("GITHUB_TOKEN")
+            }
         }
     }
 }
-
-bintray {
-    user = System.getProperty('USER')
-    key = System.getProperty('KEY')
-    pkg {
-        repo = 'setu-java-sdk'
-        name = 'org.setu.java_sdk'
-        licenses = ['MIT']
-        vcsUrl = 'https://github.com/AadumKhor/setu-java-sdk.git'
-    }
-    publications = ['MyPublication']
-}
-
-
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'

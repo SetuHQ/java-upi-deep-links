@@ -36,14 +36,14 @@ public class GenerateLinkResponse {
         if (data == null) {
             return "Empty UPI Id";
         }
-        return Objects.requireNonNullElse(data.getPaymentLink().getUpiID(), "Empty");
+        return data.getPaymentLink().getUpiID();
     }
 
     public String getPlatformBillId() {
         if (data == null) {
             return "Empty platformBillId";
         }
-        return Objects.requireNonNullElse(data.getPlatformBillID(), "Empty");
+        return data.getPlatformBillID();
     }
 
     public String getError() {
