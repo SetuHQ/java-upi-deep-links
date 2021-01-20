@@ -15,7 +15,7 @@ publishing{
     repositories{
         maven{
             name="Upi-Deeplinks-Java-SDK"
-            url="https://github.com/SetuHQ/java-upi-deep-links"
+            url="https://maven.pkg.github.com/SetuHQ/java-upi-deep-links"
             credentials{
                 username=System.getProperty("GITHUB_ACTOR")
                 password=System.getProperty("GITHUB_TOKEN")
