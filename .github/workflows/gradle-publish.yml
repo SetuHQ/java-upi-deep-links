@@ -21,8 +21,9 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-    - name: Build with Gradle
-      run: gradle build
+    - name: Build JAR file with Gradle
+#       run: ./gradlew -b build.gradle fatJar
+      run: gradle fatJar
       
     - name: Publish to GitHub Packages
       run: gradle publish
