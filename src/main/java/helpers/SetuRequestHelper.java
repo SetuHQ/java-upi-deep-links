@@ -20,7 +20,7 @@ public class SetuRequestHelper {
     private static final String authHeader = "Authorization";
     private static final String contentTypeHeader = "Content-Type";
     private static final String PROD_URL = "https://prod.setu.co/api";
-    private static final String SANDBOX_URL = "https://sandbox.setu.co/api";
+    private static final String SANDBOX_URL = "https://uat.setu.co/api";
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     private final String productionInstance;
