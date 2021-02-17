@@ -27,17 +27,13 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build JAR file with Gradle
-      run: gradle fatJar
+      run: gradle jar
       
   pre-release:
     name: "Release"
     needs: build
     runs-on: "ubuntu-latest"
     steps:
-#       - name: "Build & test"
-#         run: |
-#           echo "done!"
-
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
