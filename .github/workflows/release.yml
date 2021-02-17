@@ -25,7 +25,7 @@ jobs:
         run: |
           echo "done!"
       - name: Build JAR file with Gradle
-        run: ./gradlew -b build.gradle fatJar
+        run: gradle fatJar
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
