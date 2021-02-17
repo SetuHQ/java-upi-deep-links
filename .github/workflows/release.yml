@@ -27,7 +27,7 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build JAR file with Gradle
-      run: gradle jar
+      run: ./gradlew assemble
       
   pre-release:
     name: "Release"
